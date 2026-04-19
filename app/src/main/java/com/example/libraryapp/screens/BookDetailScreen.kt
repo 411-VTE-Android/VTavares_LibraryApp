@@ -81,3 +81,31 @@ fun BookDetailScreen(
         }
     }
 }
+
+@Composable
+fun DetailsCards(title: String, value: String) {
+    Surface(
+        shape = RoundedCornerShape(16.dp),
+        color = Color.White,
+        modifier = Modifier.wrapContentSize()
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 10.dp)
+        ) {
+            Text(
+                text = title,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.DarkGray
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = value,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+        }
+    }
+}
