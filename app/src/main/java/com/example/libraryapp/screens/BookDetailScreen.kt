@@ -77,6 +77,18 @@ fun BookDetailScreen(
                     fontSize = 16.sp
                 )
                 Spacer(modifier = Modifier.height(24.dp))
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp), // Un poco de margen a los lados
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    DetailsCards(title = "RATING", value = "4.7")
+                    DetailsCards(title = "PAG", value = "328")
+                    DetailsCards(title = "AUDIO", value = "11h 22m")
+                    DetailsCards(title = "LENG", value = "ING")
+                }
             }
         }
     }
