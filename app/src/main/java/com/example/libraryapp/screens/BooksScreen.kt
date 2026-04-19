@@ -1,0 +1,95 @@
+package com.example.libraryapp.screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
+import com.example.libraryapp.books
+import com.example.libraryapp.components.Header
+import com.example.libraryapp.components.PopularBook
+import com.example.libraryapp.ui.theme.LibraryAppTheme
+import androidx.compose.foundation.lazy.items
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+
+@Composable
+fun BooksScreen(
+    innerPadding: PaddingValues,
+    navController: NavController
+
+) {
+    val colors = MaterialTheme.colorScheme
+    val typography = MaterialTheme.typography
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colors.background)
+    ) {
+        item {
+            Header(
+                innerPadding
+            )
+        }
+
+        item {
+            Text(
+                text = "Libros Populares"
+            )
+            LazyRow(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(15.dp)
+            ) {
+                items(books) { book ->
+                    PopularBook(
+                        book = book,
+                        navController = navController
+                    )
+                }
+            }
+        }
+
+    }
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+
+@Composable
+fun BooksScreenPreview(){
+    LibraryAppTheme() {
+        BooksScreen(
+            innerPadding = PaddingValues(15.dp),
+            navController = rememberNavController()
+        )
+    }
+}
